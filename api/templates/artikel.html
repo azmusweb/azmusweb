@@ -2,29 +2,20 @@
 {% block title %}{{ artikel.payload.title|title }}{% endblock %}
 
 {% block content %}
-<!-- Article Content -->
-<div class="col-lg-8">
+ <!-- Article Content -->
+ <div class="col-lg-8">
     <article class="blog-post">
-        <img src="{{ artikel.payload.image }}" class="img-fluid mb-4" alt="Article Image" style="width: 100%; height: 400px; object-fit: cover;">
-        
+        <img src="{{artikel.payload.image}}" class="img-fluid mb-4" alt="Article Image" style="width: 100%; height: 400px; object-fit: cover;">
         <h1 class="blog-post-title mb-3">{{ artikel.payload.title|title }}</h1>
-        
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <span class="text-muted">
-                    <i class="far fa-clock"></i> 
-                    {{ artikel.payload.date if artikel.payload.date else "Tanggal Tidak Tersedia" }}
-                </span>
-                
+                <span class="text-muted"><i class="far fa-clock"></i> 26 April 2024, 15:30 WIB</span>
                 {% if artikel.payload.category %}
                     {% for cat in artikel.payload.category.split(',') %}
-                        <a href="/category/{{ cat.strip() }}">
-                            <span class="badge bg-primary ms-2">{{ cat.strip() }}</span>
-                        </a>
+                    <a href="/category/{{ cat.strip() }}"><span class="badge bg-primary ms-2">{{ cat.strip() }}</span></a>
                     {% endfor %}
                 {% endif %}
             </div>
-            
             <div class="share-buttons">
                 <button class="btn btn-sm btn-outline-secondary" onclick="shareArticle('facebook','{{ artikel.payload.title|title }}')">
                     <i class="fab fa-facebook"></i>
@@ -37,14 +28,12 @@
                 </button>
             </div>
         </div>
-
         <div class="blog-post-content">
             {{ artikel.payload.content | safe }}
         </div>
 
-        <!-- Related Articles (optional, kosongkan atau isi jika ada logic) -->
-        <!--
-        <div class="related-articles mt-5">
+        <!-- Related Articles -->
+        <!-- <div class="related-articles mt-5">
             <h3>Artikel Terkait</h3>
             <div class="row">
                 <div class="col-md-6">
@@ -66,8 +55,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        -->
+        </div> -->
     </article>
 </div>
-{% endblock %}
+{% endblock %}  
